@@ -35,8 +35,9 @@ hillPlot(x, option = c("alpha", "xi", "quantile"), start = 15,
     labels = TRUE, \dots)
     
 shaparmPlot(x, revert = FALSE, standardize = FALSE, tails = 0.01*(1:10), 
-    doplot = <<see below>>, which = <<see below>>, doprint = TRUE, 
-    both.tails = TRUE, xi.range = c(0, 10), alpha.range = c(-0.5, 1.5)) 
+    doplot = c(FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE), 
+    which = c(TRUE, TRUE, TRUE), doprint = TRUE, both.tails = TRUE, 
+    xi.range = c(-0.5, 1.5), alpha.range = c(0, 10)) 
 }
 
 

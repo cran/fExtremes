@@ -51,7 +51,7 @@
 
 
 \usage{
-emdPlot(x, doplot = TRUE, plottype = <<see below>>, labels = TRUE, \dots)
+emdPlot(x, doplot = TRUE, plottype = c("", "x", "y", "xy"), labels = TRUE, \dots)
 
 qqPlot(x, doplot = TRUE, labels = TRUE, \dots) 
 qqbayesPlot(x, doplot = TRUE, labels = TRUE, \dots)
@@ -59,14 +59,14 @@ qPlot(x, xi = 0, trim = NA, threshold = NA, doplot = TRUE, labels = TRUE, \dots)
 
 mePlot(x, doplot = TRUE, labels = TRUE, \dots)
 mrlPlot(x, conf = 0.95, umin = NA, umax = NA, nint = 100, doplot = TRUE, 
-    plottype = <<see below>>, labels = TRUE, \dots)  
+     plottype = c("autoscale", ""), labels = TRUE, \dots)  
 mxfPlot(x, tail = 0.05, doplot = TRUE, labels = TRUE, \dots)  
    
-msratioPlot(x, p = 1:4, doplot = TRUE, plottype = <<see below>>, 
+msratioPlot(x, p = 1:4, doplot = TRUE, plottype = c("autoscale", ""), 
     labels = TRUE, \dots) 
    
 recordsPlot(x, conf = 0.95, doplot = TRUE, labels = TRUE, \dots)
-ssrecordsPlot(x, subsamples = 10, doplot = TRUE, plottype = <<see below>>,
+ssrecordsPlot(x, subsamples = 10, doplot = TRUE, plottype = c("lin", "log"),
     labels = TRUE, \dots)
 
 xacfPlot(x, threshold = 0.95, lag.max = 15, doplot = TRUE, \dots)
