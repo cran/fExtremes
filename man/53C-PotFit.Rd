@@ -129,15 +129,10 @@ potFit(x, threshold = NA, nextremes = NA, run = NA, \dots)
     to add quantile estimates or expected shortfall estimates to the plot.
 }
 
-
-\seealso{
-  
-    \code{\link{gpdFit}}, 
-    \code{\link{deCluster}}.
-}
-
   
 \examples{
+## SOURCE("fExtremes.53C-PotFit")
+
 ## Use Danish Fire Insurance Loss Data:
    data(danish)
    

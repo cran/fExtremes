@@ -97,15 +97,9 @@ Embrechts, P., Klueppelberg, C., Mikosch, T. (1997);
 }
 
 
-\seealso{
-  
-    \code{\link{gevFit}},
-    \code{\link{gpdFit}}.
-    
-}
-
-
 \examples{
+## SOURCE("fExtremes.53A-GpdModelling")
+
 ## *gpd  -
    xmpExtremes("\nStart: Simulate GPD Distributed sample >")
    par(mfrow = c(2, 2))

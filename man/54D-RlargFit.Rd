@@ -200,15 +200,9 @@ Coles S. (2001);
 }
 
 
-\seealso{
-  
-    \code{\link{ppFit}},
-    \code{\link{potFit}}.
-    
-}
-
-
 \examples{
+## SOURCE("fExtremes.54D-RlargFit")
+
 ## Use Venice Data:
    data(venice)
    

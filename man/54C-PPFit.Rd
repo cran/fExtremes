@@ -207,15 +207,9 @@ Coles S. (2001);
 }
 
 
-\seealso{
-
-  \code{\link{mrlPlot}},
-  \code{\link{gpdFit}}.
-  
-}
-
-  
 \examples{
+## SOURCE("fExtremes.54C-PPFit")
+
 ## Use Rain Data:
    data(rain)
    

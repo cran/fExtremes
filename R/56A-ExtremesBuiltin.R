@@ -46,7 +46,7 @@
 #  URL: http://www.maths.lancs.ac.uk/~stephena/
 #  Packaged: Wed May  5 15:29:24 2004; stephena
 ################################################################################
-# BUILIN - PACKAGE DESCRIPTION:
+# BUILTIN - PACKAGE DESCRIPTION:
 #  Package: ismev
 #  Version: 1.1
 #  Date: 2003/11/25

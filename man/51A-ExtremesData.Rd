@@ -1,6 +1,6 @@
-\name{ExtremesPlots}
+\name{ExtremesData}
 
-\alias{ExtremesPlots}
+\alias{ExtremesData}
 
 \alias{emdPlot}
 \alias{qqPlot}
@@ -18,19 +18,29 @@
 
 \alias{gridVector}
 
+
+\alias{findThreshold}
+\alias{blocks}
+\alias{blockMaxima}
+\alias{deCluster}
+
+
 \title{Explorative Data Analysis}
 
 
 \description{
 
     A collection and description of functions for explorative 
-    data analysis of extreme values. The tools include plot 
-    functions for emprical distributions, quantile plots, graphs 
-    exploring the properties of exceedences over a threshold, 
-    plots for mean/sum ratio and for the development of records.
+    data analysis including data preprocessing of extreme values. 
+    The tools include plot functions for emprical distributions, 
+    quantile plots, graphs exploring the properties of exceedences 
+    over a threshold, plots for mean/sum ratio and for the development 
+    of records. The data preprocessing includes tools to 
+    separate data beyond a threshold value, to compute blockwise 
+    data like block maxima, and to decluster point process data.
     \cr
     
-    The functions are:
+    The plot functions are:
     
     \tabular{ll}{
     \code{emdPlot} \tab Plot of empirical distribution function, \cr
@@ -46,6 +56,15 @@
     \code{xacfPlot} \tab ACF of exceedences over a threshold, \cr
     \code{interactivePlot} \tab a framework for interactive plot displays, \cr
     \code{gridVector} \tab creates from two vectors x and y all grid points. }
+    
+    The functions for data preprocessing are:
+    
+    \tabular{ll}{
+    \code{findThreshold} \tab Upper threshold for a given number of extremes, \cr  
+    \code{blocks} \tab  Create data blocks on vectors and time series, \cr
+    \code{blockMaxima} \tab Block Maxima from a vector or a time series, \cr 
+    \code{deCluster} \tab Declusters clustered point process data. }
+   
     
 }
 
@@ -73,14 +92,31 @@ xacfPlot(x, threshold = 0.95, lag.max = 15, doplot = TRUE, \dots)
 
 interactivePlot(x, choices = paste("Plot", 1:9), 
     plotFUN = paste("plot.", 1:9, sep = ""), which = "all", \dots)
-    
 gridVector(x, y)
+
+findThreshold(x, n = NA)
+blocks(x, block = "month", FUN = max)
+blockMaxima(x, block = "month", details = FALSE, doplot = TRUE, \dots)
+deCluster(x, run = NA, doplot = TRUE)
 }
 
 
 \arguments{
 
-    \item{choices}{
+    \item{block}{
+    	[blockMaxima] - \cr
+        the block size. A numeric value is interpreted as the number  
+        of data values in each successive block. All the data is used,
+        so the last block may not contain \code{block} observations. 
+        If the \code{data} has a  \code{times} attribute containing (in
+        an object of class \code{"POSIXct"}, or an object that can be
+        converted to that class, see \code{\link{as.POSIXct}}) the
+        times/dates of each observation, then \code{block} may instead
+        take the character values \code{"month"}, \code{"quarter"},
+        \code{"semester"} or \code{"year"}. By default monthly blocks
+        from daily data are assumed.
+        }
+   	\item{choices}{
         [interactivePlot] - \cr
         a vector of character strings for the
         choice menu. By Default \code{"Plot 1"} ... \code{"Plot 9"}
@@ -90,8 +126,15 @@ gridVector(x, y)
         [recordsPlot] - \cr
         a confidence level. By default 0.95, i.e. 95\%.
         }
+    \item{details}{
+        [blockMaxima] - \cr
+        a logical. Should details be printed?
+        }
     \item{doplot}{
         a logical. Should the results be plotted? By default \code{TRUE}.
+        }
+        \item{FUN}{the function to be applied. Additional arguments are
+        passed by the \code{\dots} argument.
         }
     \item{labels}{
         a logical. Whether or not x- and y-axes should be automatically 
@@ -107,6 +150,13 @@ gridVector(x, y)
         [mrlPlot] - \cr
         the number of intervals, see \code{umin} and \code{umax}. The 
         default value is 100.
+        }
+    \item{n}{
+        [findThreshold] - \cr
+        a numeric value or vector giving number of extremes above 
+        the threshold. If \code{n} is not specified, \code{n} is 
+        set to an integer representing 5\% of the data from the 
+        whole data set \code{x}.
         }
     \item{p}{
         [msratioPlot] - \cr
@@ -134,6 +184,12 @@ gridVector(x, y)
         one from two options can be select either \code{"lin"}
         or \code{"log"}. The default creates a linear plot.
         }
+    \item{run}{
+        [deCluster] - \cr
+        parameter to be used in the runs method; any two consecutive 
+        threshold exceedances separated by more than this number of 
+        observations/days are considered to belong to different clusters.
+        }  
     \item{subsamples}{
         [ssrecordsPlot] - \cr
         the number of subsamples, by default 10, an integer value.
@@ -164,8 +220,19 @@ gridVector(x, y)
         named \code{"all"} all plots are displayed.
         }
     \item{x, y}{
-        a numeric data vector or an object to be plotted. 
+        numeric data vectors or in the case of x an object to be plotted. 
         \cr
+        [finThreshold][blocks][blockMaxima][deCluster] - \cr
+        a numeric data vector from which \code{findThreshold} and 
+        \code{blockMaxima} determine the threshold values and block 
+        maxima values. 
+        For the function \code{deCluster} the argument
+        \code{x} represents a numeric vector of threshold exceedances
+        with a \code{times} attribute which should be a numeric
+        vector containing either the indices or the times/dates
+        of each exceedance (if times/dates, the attribute should
+        be an object of class \code{"POSIXct"} or an object that
+        can be converted to that class; see \code{\link{as.POSIXct}}).
         [gridVector] - \cr
         two numeric vector which span the two dimensional grid. 
         }
@@ -173,7 +240,7 @@ gridVector(x, y)
         the shape parameter of the generalized Pareto distribution.
         }
     \item{\dots}{
-        additional arguments passed to the plot function.
+        additional arguments passed to the FUN or plot function.
         }
         
 }
@@ -248,6 +315,47 @@ gridVector(x, y)
     \cr\cr
     This function plots the autocorrelation functions of heights and 
     distances of exceedences over a threshold.
+    \cr
+    
+    
+    \bold{Finding Thresholds:} 
+    \cr\cr
+    The function \code{findThreshold} finds a threshold so that a given 
+    number of extremes lie above. When the data are tied a threshold is 
+    found so that at least the specified number of extremes lie above.
+    \cr
+    
+  
+    \bold{Computing Block Maxima:} 
+    \cr\cr  
+    The function \code{blockMaxima} calculates block maxima from a vector 
+    or a time series, whereas the function
+    \code{blocks} is more general and allows for the calculation of
+    an arbitrary function \code{FUN} on blocks.
+    \cr
+    
+        
+    \bold{De-Clustering Point Processes:} 
+    \cr\cr
+    The function \code{deCluster} declusters clustered point process 
+    data so that Poisson assumption is more tenable over a high threshold.
+
+}
+
+
+\value{
+  
+    \code{findThreshold} 
+    \cr
+    returns a numeric vector of suitable thresholds. 
+    
+    \code{blockMaxima} 
+    \cr
+    returns a numeric vector of block maxima data.
+    
+    \code{deCluster} 
+    \cr
+    returns an object for the declustered point process. 
 
 }
 
@@ -288,6 +396,8 @@ Embrechts, P., Klueppelberg, C., Mikosch, T. (1997);
 
 
 \examples{ 
+## SOURCE("fExtremes.51A-ExtremesData")
+
 ## emdPlot -
    xmpExtremes("\nStart: Empirical Distribution Function >")
    # Danish fire insurance data show Pareto tail behaviour:
@@ -407,6 +517,30 @@ Embrechts, P., Klueppelberg, C., Mikosch, T. (1997);
    par(mfrow = c(2, 2))
    data(bmw)
    xacfPlot(bmw)
+   
+## findThreshold -
+   xmpExtremes("\nStart: Find Thresold >")
+   # Find threshold giving (at least) fifty exceedances 
+   # for Danish Fire data
+   data(danish)
+   findThreshold(danish, n = c(10, 50, 100))    
+   
+## blockMaxima -
+   xmpExtremes("\nNext: Compute Block Maxima >")
+   # Block Maxima (Minima) for the right and left tails 
+   # of the BMW log returns:
+   data(bmw)
+   par(mfrow = c(2, 1))
+   blockMaxima( bmw, block = 100)
+   blockMaxima(-bmw, block = 100)     
+ 
+## deCluster -
+   xmpExtremes("\nNext: De-Cluster Exceedences >")
+   # Decluster the 200 exceedances of a particular  
+   # threshold in the negative BMW log-return data
+   par(mfrow = c(2, 2))
+   fit = potFit(-bmw, nextremes = 200) 
+   deCluster(fit$fit$data, 30)   
 }
 
 

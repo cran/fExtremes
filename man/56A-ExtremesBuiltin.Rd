@@ -1,4 +1,6 @@
-\name{ExtremesBuiltin}
+\name{evirBuiltin}
+
+\alias{evir}
 
 \alias{decluster} 
 \alias{emplot}
@@ -96,15 +98,28 @@
 \alias{wooster}
 
 
-\title{fExtremes Builtin Functions}
+\alias{bmw.ret}
+\alias{dax.ret}
+
+
+\title{evir Builtin Functions}
 
 
 \description{
 
-	Builtin functions as available in the contributed \R-packages
-    'evir' and 'ismev'. They are used only as internal functions,
-    and they are not thought for usage by Rmetrics users.
+	Builtin functions as available in the contributed 
+	\R-packages 'evir' and 'ismev'. They are used only 
+	as internal functions, and they are not thought 
+	for usage by Rmetrics users.
 	
 }
+
+
+\examples{
+## SOURCE("fExtremes.55A-ExtremesBuiltin")
+
+## -
+}
+
 
 \keyword{data}

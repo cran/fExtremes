@@ -320,15 +320,10 @@ Hosking J.R.M., Wallis J.R., (1987);
     
 }
 
-
-\seealso{
-    
-    \code{\link{gevFit}}.
-    
-} 
-
   
 \examples{
+## SOURCE("fExtremes.53B-GpdFit")
+
 ## Load Data:
    data(danish)
    

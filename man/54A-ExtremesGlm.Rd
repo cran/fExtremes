@@ -264,16 +264,10 @@ Coles S. (2001);
     
 }
 
-
-\seealso{
-  
-    \code{\link{GevFit}},
-    \code{\link{GevDistribution}}.
-    
-}
-
   
 \examples{
+## SOURCE("fExtremes.54A-ExtremesGlm")
+
 ## Simulated GEV Data:
    xmpExtremes("\nStart: Simulte GEV Sample >")
    x = gevSim(model = list(shape = 0.25, location = 0, scale = 1), n = 1000)

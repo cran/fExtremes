@@ -1,28 +1,6 @@
 funExtremes				fExtremes Function Addon
 
-xmpEDAqqPlot            Quantile Plots of BMW and NYSE Data
-xmpEDAmxfPlot           Mean Excess Function Plot
-xmpEDAmrlPlot           Mean Residual Life Plot
-xmpEDArecordsPlot       Plot of Records Development
-xmpEDAssrecordsPlot     Plot of Subsample Records
-xmpEDAmsratioPlot       Ratio of Maximum and Sum Plot
-
-xmpGEVdistributions     Gumbel, Frechet and Weibull Dfs
-xmpGEVreturnlevels      Return Levels of the GEV Distribution
-xmpGEVconvexp           Convergence of Exponential Maxima
-xmpGEVconvnorm          Convergence of Normal Maxima
-xmpGEVpwmFit            GEV Probability Weigheted Moments
-xmpGEVpwmBMW            L-Moments Estimation for BMW Stocks         
-xmpGEVhillPlot          Hill's Estimator from MDA Conditions
-xmpGEVshaparmPlot       Shape Parameter from MDA Conditions
-xmpGEVmleFit            GEV Estimation for NYSE log Returns
-
-xmpPOTprocess           Display Point Processes
-xmpPOTppFit             Fit Parameters to a point process
-xmpPOTmrlPlot           Mean Residual Life Plot
-xmpPOTgpdFit            Fit Parameters to a GPD Model
-
-xmpEXindexPlot          Plot of Extremal Index estimates
-xmpEXindexesPlot        Extremal Indexes versus Thresholds
-
-xmpBivariateCopulae     Bivariate Copulae
+xmpDWChapter51			Extreme Value Plots
+xmpDWChapter52			Fluctuations of Maxima and GEV Distribution
+xmpDWChapter53			Extremes via Point Processes
+xmpDWChapter54    		The Extremal Index

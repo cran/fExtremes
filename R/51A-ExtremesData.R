@@ -28,7 +28,7 @@
 
 
 ################################################################################
-# FUNCTION			DESCRIPTION:
+# FUNCTION			PART I: Explorative Data Analysis
 #  emdPlot			 Plots empirical distribution function
 #  qqPlot			 Creates a quantile-quantile plot
 #  qqbayesPlot		 Creates qq-Plot with 95 percent intervals
@@ -43,6 +43,18 @@
 #  interactivePlot   Plots several graphs interactively
 #  gridVector        Creates from two vectors rectangular grid points
 ################################################################################
+
+
+################################################################################
+# FUNCTION			PART II: Data Preprocessing:
+#  findThreshold     Finds extreme values above a threshold 
+#  blocks            Creates data blocks on vectors and time series
+#  blockMaxima		 Calculates block maxima on vectors and time series
+#  deCluster 		 Declusters a point process
+################################################################################
+
+
+# PART I:
 
 
 emdPlot = 
@@ -64,6 +76,9 @@ labels = TRUE, ...)
 	# Settings:
 	alog = plottype[1]
 		
+	# Convert from univariate 'timSeries':
+	if (is.timeSeries(x)) x = as.vector(x)
+	
 	# Convert x to a vector, if the input is a data.frame.
 	if (is.data.frame(x)) x = x[,1] 
 	xs = x = sort(as.numeric(x))
@@ -113,8 +128,11 @@ function (x, doplot = TRUE, labels = TRUE, ...)
 	
 	# FUNCTION:
 	
+	# Convert from univariate 'timSeries':
+	if (is.timeSeries(x)) x = as.vector(x)
+	
 	# Convert x to a vector, if the input is a data.frame.
-	if (is.data.frame(x)) x = x[,1] 
+	if (is.data.frame(x)) x = x[, 1] 
 	
 	# Plot:
 	if (doplot) {
@@ -171,6 +189,9 @@ function(x, doplot = TRUE, labels = TRUE, ...)
 
 	# FUNCTION:
 	
+	# Convert from univariate 'timSeries':
+	if (is.timeSeries(x)) x = as.vector(x)
+	
 	# Settings:
 	mydata = x
    	n = length(mydata) 
@@ -190,7 +211,7 @@ function(x, doplot = TRUE, labels = TRUE, ...)
 			ylab = ""
 			main = "" }
    		plot(z, x, xlab = xlab, ylab = ylab, main = main, ...)
-   		abline(0, 1, col = "steelblue3")
+   		abline(0, 1, col = "steelblue")
    		if (labels) grid() 
    	}
   
@@ -223,6 +244,9 @@ labels = TRUE, ...)
 	#	Creates an exploratory QQplot for Extreme Value Analysis.
 
 	# FUNCTION:
+	
+	# Convert from univariate 'timSeries':
+	if (is.timeSeries(x)) x = as.vector(x)
 	
 	# Settings:
 	line = TRUE
@@ -276,6 +300,9 @@ function (x, tail = 0.05, doplot = TRUE, labels = TRUE, ...)
 	
 	# FUNCTION:
 	
+	# Convert from univariate 'timSeries':
+	if (is.timeSeries(x)) x = as.vector(x)
+	
 	# Convert x to a vector, if the input is a data.frame.
 	if(is.data.frame(x)) x = x[,1] 
 	u = rev(sort(x))
@@ -326,6 +353,9 @@ doplot = TRUE, plottype = c("autoscale", ""), labels = TRUE, ...)
 	
 	# FUNCTION:
 	
+	# Convert from univariate 'timSeries':
+	if (is.timeSeries(x)) x = as.vector(x)
+	
 	# Settings:
 	plottype = plottype[1]
 	if (plottype == "autoscale") {
@@ -352,20 +382,22 @@ doplot = TRUE, plottype = c("autoscale", ""), labels = TRUE, ...)
 		if (labels) {
 		    xlab = "Threshold: u"
 			ylab = "Mean Excess: e"
-			main = "Mean Residual Live Plot" }
-		else {
+			main = "Mean Residual Live Plot" 
+		} else {
 			xlab = ""
 			ylab = ""
-			main = "" }
+			main = "" 
+		}
 		if (autoscale) {
 			ylim = c(min(xl[!is.na(xl)]), max(xu[!is.na(xu)]))
 			plot(u, sx, type = "l", lwd = 2, xlab = xlab, 
-				ylab = ylab, ylim = ylim, main = main, ...) }
-		else {
+				ylab = ylab, ylim = ylim, main = main, ...) 
+		} else {
 			plot(u[!is.na(xl)], sx[!is.na(xl)], type = "l", 
-				lwd = 2, xlab = xlab, ylab = ylab, main = main, ...) } 
-		lines(u[!is.na(xl)], xl[!is.na(xl)], col = "steelblue3")
-		lines(u[!is.na(xu)], xu[!is.na(xu)], col = "steelblue3")
+				lwd = 2, xlab = xlab, ylab = ylab, main = main, ...) 
+		} 
+		lines(u[!is.na(xl)], xl[!is.na(xl)], col = "steelblue")
+		lines(u[!is.na(xu)], xu[!is.na(xu)], col = "steelblue")
 		if (labels) grid() 
 	}
 	
@@ -391,6 +423,9 @@ function(x, doplot = TRUE, labels = TRUE, ...)
 	# 	A function imported from R-package evir
 	
 	# FUNCTION:
+	
+	# Convert from univariate 'timSeries':
+	if (is.timeSeries(x)) x = as.vector(x)
 	
 	# Settings:
 	omit = 0
@@ -459,6 +494,9 @@ function(x, conf = 0.95, doplot = TRUE, labels = TRUE, ...)
 
 	# FUNCTION:
 	
+	# Convert from univariate 'timSeries':
+	if (is.timeSeries(x)) x = as.vector(x)
+	
 	# Settings:
 	conf.level = conf
 	
@@ -523,8 +561,11 @@ labels = TRUE,  ...)
 	
 	# FUNCTION:
 	
+	# Convert from univariate 'timSeries':
+	if (is.timeSeries(x)) x = as.vector(x)
+	
 	# Convert x to a vector, if the input is a data.frame.
-	if(is.data.frame(x)) x = x[,1] 
+	if(is.data.frame(x)) x = x[, 1] 
 	
 	# Plot type:
 	plottype = plottype[1]
@@ -541,7 +582,8 @@ labels = TRUE,  ...)
 		while (!is.na(v)) {
 			u = x[x > u][1]
 			v = y[x > u][1]
-			if(!is.na(v)) x.records = c(x.records, v) }	
+			if(!is.na(v)) x.records = c(x.records, v) 
+		}	
 		if (i == 1) {
 			nc = 1:length(x)
 			csmean = cumsum(1/nc)
@@ -553,21 +595,26 @@ labels = TRUE,  ...)
 				if (labels) {
 					if (plottype == "lin") xlab = "n"
 					if (plottype == "log") xlab = "log(n)"
-					ylab = "N(n)" }
-					main = "Subsample Records Plot"
-					plot (nc, csmean+cssd, type = "l", ylim = c(0, ymax),
-						xlab = xlab, ylab = ylab, main = main, ...) }
-				else {
-					plot (nc, csmean+cssd, type = "l", ylim = c(0, ymax),
-					 	...) } 
-				lines(nc, csmean)  
-				lines(nc, csmean-cssd) } 
+					ylab = "N(n)" 
+				}
+				main = "Subsample Records Plot"
+				plot (nc, csmean+cssd, type = "l", ylim = c(0, ymax),
+					xlab = xlab, ylab = ylab, main = main, ...) 
+				grid()
+			} else {
+				plot (nc, csmean+cssd, type = "l", ylim = c(0, ymax), ...) 
+			} 
+			lines(nc, csmean, col = "steelblue")  
+			lines(nc, csmean-cssd, col = "steelblue") 
+		} 
 		y.records = 1:length(x.records)
 		x.records = x.records[y.records < ymax]
 		if (doplot) {
 			if (plottype == "log") x.records = log(x.records)
-			points(x.records, y.records[y.records<ymax], col=i) }
-		records[i] = y.records[length(y.records)]}
+			points(x.records, y.records[y.records<ymax], pch = i) 
+		}
+		records[i] = y.records[length(y.records)]
+	}
 	
 	# Result:
 	subsample = 1:subsamples
@@ -590,6 +637,9 @@ labels = TRUE, ...)
 	#	Creates a Plot of maximum and sum ratio.
 	
 	# FUNCTION:
+	
+	# Convert from univariate 'timSeries':
+	if (is.timeSeries(x)) x = as.vector(x)
 	
 	# Settings:
 	plottype = plottype[1]
@@ -656,6 +706,9 @@ function(x, threshold = 0.95, lag.max = 15, doplot = TRUE, ...)
 	#	heights and one for the distances.
   	
 	# FUNCTION:
+	
+	# Convert from univariate 'timSeries':
+	if (is.timeSeries(x)) x = as.vector(x)
 	
 	# Settings:
 	# Sorry, user specified labels not yet implemented.
@@ -726,14 +779,15 @@ plotFUN = paste("plot.", 1:9, sep = ""), which = "all", ...)
 	if (length(choices) != length(plotFUN)) 
 		stop("Arguments choices and plotFUN must be of same length.")
 	if (length(which) > length(choices)) 
-		stop("Arguments which has incoorect length.")
+		stop("Arguments which has incorrect length.")
 	if (length(which) > length(plotFUN)) 
 		stop("Arguments which has incorrect length.")
 	if (length(choices) > 9)
 		stop("Sorry, only 9 plots at max are supported.")
 	
 	# Internal "askPlot" Function:          	  
-    multPlot = function (x, choices, ...) {
+    multPlot = function (x, choices, ...) 
+    {
 	    # Selective Plot:
 		selectivePlot = function (x, choices, FUN, which){
 			# Internal Function:
@@ -764,16 +818,27 @@ plotFUN = paste("plot.", 1:9, sep = ""), which = "all", ...)
 	        title = "\nMake a plot selection (or 0 to exit):")
 	        # up to 9 plot functions ...
 	        switch (pick, plot.1(x), plot.2(x), plot.3(x), plot.4(x), 
-	        	plot.5(x), plot.6(x), plot.7(x), plot.8(x), plot.9(x) ) } }
+	        	plot.5(x), plot.6(x), plot.7(x), plot.8(x), plot.9(x) ) 
+	    } 
+	}
 	        		          
 	# Plot:
-	if (which[1] == "all") which = rep(TRUE, times = length(choices))
+	if (is.numeric(which)) {
+		Which = rep(FALSE, times = length(choices))
+		Which[which] = TRUE
+		which = Which
+	}
+	if (which[1] == "all") {
+		which = rep(TRUE, times = length(choices))
+	}
 	if (which[1] == "ask") {
-		multPlot(x, choices, ...) }
-	else {
+		multPlot(x, choices, ...) 
+	} else {
 		for ( i in 1:length(which) ) {
 			FUN = match.fun(plotFUN[i])
-			if (which[i]) FUN(x) } }
+			if (which[i]) FUN(x) 
+		} 
+	}
 			
 	# Return Value:
 	invisible(x)
@@ -826,5 +891,202 @@ function(x, y)
 }
 
 
-# ******************************************************************************
+################################################################################
+
+
+# PART II:
+
+
+findThreshold =
+function(x, n = NA)
+{	# A function implemented by Diethelm Wuertz
+
+	# Description:
+	#	Finds upper thresold for a given number of Extremes.
+	
+	# Arguments:
+	# 	n 	- a numeric value or vector giving number of extremes 
+	#         above the threshold. If "n" is not specified, "n"
+	#		  is set to an integer representing 5% of the data 
+	#         from the whole data set "x".
+		
+	# Note:
+	#	Imported from R-package evir/EVIS.
+
+	# FUNCTION:
+	
+	# Settings:
+	if(is.na(n[1])) n = floor(0.05*length(x))
+	
+	# Continue:
+	x = rev(sort(as.numeric(x)))
+	thresholds = unique(x)
+	indices = match(x[n], thresholds)
+	indices = pmin(indices + 1, length(thresholds))	
+	
+	# Return Value:
+	thresholds[indices]
+}
+
+
+# ------------------------------------------------------------------------------
+
+
+blocks =
+function(x, block = "month", FUN = max)
+{	# A function implemented by Diethelm Wuertz
+
+	# Description:
+	#	Creates data blocks on vectors and time series.
+
+	# Note:
+	#	Imported from R-package evir/EVIS.
+	
+	# FUNCTION:
+	
+    # Settings:
+    data = x
+    
+    # Compute:
+    n.all = length(data)
+    if (is.character(block)) {
+     	times = as.POSIXlt(attributes(data)$times) 
+      	if (block %in% c("semester", "quarter")) {
+      		sem = quart = times$mon
+           	sem[sem %in% 0:5] = quart[quart %in% 0:2] = 0
+           	sem[sem %in% 6:11] = quart[quart %in% 3:5] = 1
+           	quart[quart %in% 6:8] = 2
+          	quart[quart %in% 9:11] = 3 }
+        grouping = switch(block,
+          	semester = paste(times$year, sem),
+           	quarter = paste(times$year, quart),
+           	quarters = paste(times$year, quart),
+          	month = paste(times$year, times$mon),
+          	months = paste(times$year, times$mon),
+          	year = times$year,
+          	years = times$year,
+          	stop("unknown time period"))
+      	newdata = tapply(data, grouping, FUN=FUN) }
+   	else {
+       	data = as.numeric(data)
+       	nblocks = (length(data) %/% block) + 1
+       	grouping = rep(1:nblocks, rep(block, nblocks))[1:length(data)]
+       	newdata = tapply(data, grouping, FUN=FUN)}
+       
+  	# Return Value: 
+    result = newdata 
+    result
+}
+
+
+# -----------------------------------------------------------------------------
+
+
+blockMaxima = 
+function(x, block = "month", details = FALSE, doplot = TRUE, ...) 
+{  	# A function implemented by Diethelm Wuertz
+	
+	# Description:
+	#	Calculates block maxima on vectors and time series.
+	
+	# Arguments:
+	#	x 		- may be alternatively as.vector or as.ts
+	#   block 	- as.numeric:   length of a block
+	#			  as.character: year | semester | quarter | month
+	
+	# Note:
+	#   Calls McNeils Splus function blocks()
+	#	Output data as vector of transposed 
+	#	result to get proper order of data!
+
+	# FUNCTION:
+	
+	# Settings
+	x = blocks(x, block)
+  	
+	# Plot:
+	if (doplot) {
+		plot(as.vector(x), type="h", ylab = "Block Maxima",  ...)
+		title(main = paste(block, "- Block Maxima"))
+		grid() }
+  	
+	# Details:
+	# if details == FALSE a vector is returned, i.e details are removed!
+	if (!details) x = as.vector(x[is.na(x) == FALSE])
+	
+	# Return Value:
+	x
+}
+
+
+# -----------------------------------------------------------------------------
+
+
+deCluster = 
+function(x, run = NA, doplot = TRUE)
+{	# A function implemented by Diethelm Wuertz 
+
+	# Description:
+	#	Declusters a point process
+	
+	# Note:
+	#	Imported from R-package evir/EVIS.
+	
+	# FUNCTION:
+	
+	# Settings:
+	labels = TRUE
+	
+	# Imported Function:
+	series = x
+	picture = doplot
+	n = length(as.numeric(series))
+    times = attributes(series)$times
+    if (is.null(times)) 
+        stop("`series' must have a `times' attribute")
+    as.posix = is.character(times) || inherits(times, "POSIXt") || 
+        inherits(times, "date") || inherits(times, "dates")
+    if (as.posix) 
+        gaps = as.numeric(difftime(as.POSIXlt(times)[2:n], 
+        as.POSIXlt(times)[1:(n - 1)], units = "days"))
+    else gaps = as.numeric(diff(times))
+    longgaps = gaps > run
+    if (sum(longgaps) <= 1) 
+        stop("Decluster parameter too large")
+    cluster = c(0, cumsum(longgaps))
+    cmax = tapply(as.numeric(series), cluster, max)
+    newtimes = times[match(cmax, series)]
+    newseries = structure(series[match(cmax, series)], times = newtimes)
+    n = length(as.numeric(newseries))
+    if (as.posix) {
+        newgaps = as.numeric(difftime(as.POSIXlt(newtimes)[2:n], 
+            as.POSIXlt(newtimes)[1:(n - 1)], units = "days"))
+        times = as.POSIXlt(times)
+        newtimes = as.POSIXlt(newtimes) }
+    else {
+    	newgaps = as.numeric(diff(newtimes)) }
+    
+    # Plot:
+    if (doplot) {
+        # cat("Declustering picture...\n")
+        # cat(paste("Data reduced from", length(as.numeric(series)), 
+        #     "to", length(as.numeric(newseries)), "\n"))
+        # par(mfrow = c(2, 2))
+        if (labels) {
+            main = "de-Clustering"
+        	plot(times, series, type = "h", main = main)
+        	qPlot(gaps)
+        	plot(newtimes, newseries, type = "h", main = main)
+        	qPlot(newgaps) }
+    }
+    
+    # Result:
+    ans = newseries
+
+	# Return Value:
+	ans
+}   
+  
+ 
+################################################################################
 
