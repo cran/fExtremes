@@ -2616,7 +2616,8 @@ function(x, ...)
     while(pick > 0) {
         pick <- menu(tmenu, title = 
              "\nMake a plot selection (or 0 to exit):")
-        if(pick %in% c(4,7)) require("ts", quietly = TRUE)
+        ## DW: if(pick %in% c(4,7)) require("ts", quietly = TRUE)
+        ## DW: ts is now in stats and loaded ...
         if(pick %in% 1:7) lastcurve <- NULL
     switch(pick,
             {
