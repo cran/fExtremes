@@ -1,0 +1,12 @@
+dgev                    Generalized Extreme Value Modelling
+evir                    evir Builtin Functions
+ExtremeIndexPlots       Extremal Index Estimation
+ExtremesData            Explorative Data Analysis
+ExtremesTools           fExtremes Tools
+GevGlmFit               Modelling the GEV Distribution including GLM
+GpdDistribution         GPD Distributions for Extreme Value Theory
+GpdFit                  Modelling the Generalized Pareto Distribution
+GpdGlmFit               Modelling the GPD Distribution including GLM
+PotFit                  Modelling Peaks Over a Threshold
+PPFit                   Modelling Point Processes
+RlargFit                Modelling the Order Statistic Model
