@@ -16,7 +16,7 @@
 
 # Copyrights (C)
 # for this R-port:
-#   1999 - 2008, Diethelm Wuertz, Rmetrics Foundation, GPL
+#   1999 - 2007, Diethelm Wuertz, GPL
 #   Diethelm Wuertz <wuertz@itp.phys.ethz.ch>
 #   info@rmetrics.org
 #   www.rmetrics.org
@@ -28,25 +28,46 @@
 
 
 ################################################################################
+# METHODS:                PRINT, PLOT, AND SUMMARY:
+#  show.fGPDFIT            S4 Print Method for object of class "fGPDFIT"
+################################################################################
 
 
-.First.lib =
-function(lib, pkg)
-{
-    # Startup Mesage and Desription:
-    MSG <- if(getRversion() >= "2.5") packageStartupMessage else message
-    dsc <- packageDescription(pkg)
-    if(interactive() || getOption("verbose")) {
-        # not in test scripts
-        MSG(sprintf("Rmetrics Package %s (%s) loaded.", pkg, dsc$Version))
-    }
+setMethod("show", "fGPDFIT",
+    function(object)
+{   # A function implemented by Diethelm Wuertz
 
-    # Load dll:
-    # library.dynam("fExtremes", pkg, lib)
-}
+    # Description:
+    #   Print Method for an object of class 'gpdFit'
 
-if(!exists("Sys.setenv", mode = "function")) # pre R-2.5.0, use "old form"
-    Sys.setenv <- Sys.putenv
+    # FUNCTION:
+
+    # Title:
+    cat("\nTitle:\n ", object@title, "\n")
+
+    # Function Call:
+    cat("\nCall:\n ")
+    cat(paste(deparse(object@call), sep = "\n",
+        collapse = "\n"), "\n", sep = "")
+
+    # Estimation Type:
+    cat("\nEstimation Method:\n ", object@method, "\n")
+
+    # Estimated Parameters:
+    cat("\nEstimated Parameters:\n")
+    print(object@fit$par.ests)
+
+    # Desription:
+    cat("\nDescription\n ", object@description, "\n\n")
+
+
+    # Return Value:
+    invisible(object)
+})
+
+
+# ------------------------------------------------------------------------------
+
 
 
 

@@ -5,7 +5,6 @@
 \alias{fGPDFIT}
 \alias{fGPDFIT-class}
 
-\alias{show.fGPDFIT}
 \alias{show,fGPDFIT-method}
 
 \alias{gpdSim}
@@ -48,7 +47,7 @@ gpdSim(model = list(xi = 0.25, mu = 0, beta = 1), n = 1000,
 gpdFit(x, u = quantile(x, 0.95), type = c("mle", "pwm"), information = 
     c("observed", "expected"), title = NULL, description = NULL, \dots)
 
-show.fGPDFIT(object)
+\S4method{show}{fGPDFIT}(object)
 \method{plot}{fGPDFIT}(x, which = "ask", \dots)
 \method{summary}{fGPDFIT}(object, doplot = TRUE, which = "all", \dots)
 }
@@ -275,7 +274,6 @@ Hosking J.R.M., Wallis J.R., (1987);
 \examples{
 ## gpdSim  -
    x = gpdSim(model = list(xi = 0.25, mu = 0, beta = 1), n = 1000)
-  
 ## gpdFit - 
    par(mfrow = c(2, 2), cex = 0.7)  
    fit = gpdFit(x, u = min(x), type = "pwm") 

@@ -28,68 +28,56 @@
 
 
 ################################################################################
-# FUNCTION:             GEV SIMULATION:
-#  gevSim                Simulates a GEV distributed process
-#  gumbelSim             Simulates a Gumbel distributed process
+# METHODS:                PRINT, PLOT, AND SUMMARY:
+#  summary.fGPDFIT         S3 Summary Method for object of class "fGPDFIT"
 ################################################################################
 
 
-gevSim = 
-function(model = list(xi = -0.25, mu = 0, beta = 1), n = 1000, seed = NULL)
-{   # A function implemented by Diethelm Wuertz
+summary.fGPDFIT = 
+function(object, doplot = TRUE, which = "all", ...) 
+{   # A function written by Diethelm Wuertz
 
     # Description:
-    #   Generates random variates from a GEV distribution
+    #   Summary method for objects of class "gpdFit"
     
     # Arguments:
     
-    # Examples:
-    #   gevSim(n = 100)
-    #   gevSim(n = 100, seed = 4711)
-    #   gevSim(model = list(xi = -0.15, mu = 0, beta = 0.02))
-    
     # FUNCTION:
+
+    # Title:
+    cat("\nTitle:\n" , object@title, "\n")
     
-    # Seed:
-    if (is.null(seed)) seed = NA else set.seed(seed)
+    # Function Call:
+    cat("\nCall:\n")
+    cat(paste(deparse(object@call), sep = "\n", 
+        collapse = "\n"), "\n", sep = "") 
+            
+    # Estimation Type:
+    cat("\nEstimation Type:\n ", object@method, "\n") 
     
-    # Simulate:
-    ans = rgev(n = n, xi = model$xi, mu = model$mu, beta = model$beta)
-    ans = as.ts(ans)
+    # Estimated Parameters:
+    cat("\nEstimated Parameters:\n")
+    print(object@fit$par.ests)
     
-    # Control:
-    attr(ans, "control") = 
-        data.frame(t(unlist(model)), seed = seed, row.names = "control")
-        
+    # Summary - For MLE print additionally:
+    if (object@method[2] == "mle") {
+        cat("\nStandard Deviations:\n"); print(object@fit$par.ses)
+        if (!is.na(object@fit$llh))
+            cat("\nLog-Likelihood Value:\n ", object@fit$llh, "\n")
+        if (!is.na(object@fit$convergence))
+            cat("\nType of Convergence:\n ", object@fit$convergence, "\n") 
+    }
+    
+    # Plot:
+    if (doplot) {
+        plot(object, which = which, ...)
+    }
+    
+    # Desription:
+    cat("\nDescription\n ", object@description, "\n\n")
+    
     # Return Value:
-    ans 
-}
-
-
-# ------------------------------------------------------------------------------
-
-
-gumbelSim = 
-function(model = list(mu = 0, beta = 1), n = 1000, seed = NULL)
-{   # A function implemented by Diethelm Wuertz
-
-    # Description:
-    #   Generates random variates from a GEV distribution
-    
-    # Arguments:
-    
-    # Examples:
-    #   gumbelSim(n = 100)
-    #   gumbelSim(n = 100, seed = 4711)
-    
-    # FUNCTION:
-    
-    # Simulate:
-    ans = gevSim(model = list(xi = 0, mu = model$mu, beta = model$beta), 
-        n = n, seed = seed)
-        
-    # Return Value:
-    ans 
+    invisible(object)
 }
 
 
