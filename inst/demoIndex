@@ -24,3 +24,5 @@ xmpPOTgpdFit            Fit Parameters to a GPD Model
 
 xmpEXindexPlot          Plot of Extremal Index estimates
 xmpEXindexesPlot        Extremal Indexes versus Thresholds
+
+xmpBivariateCopulae     Bivariate Copulae
