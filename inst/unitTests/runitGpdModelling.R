@@ -40,26 +40,6 @@
 ################################################################################
 
 
-test.aaa = 
-function()
-{
-    # Help File:
-    helpFile = function() { 
-        example(GpdModelling, ask = FALSE)
-        return() 
-    }
-    checkIdentical(
-        target = class(try(helpFile())),
-        current = "NULL")
-
-    # Return Value:
-    return()    
-}
-
-
-# ------------------------------------------------------------------------------
-
-
 test.gpdSim = 
 function()
 {
@@ -188,17 +168,6 @@ function()
     
     # Return Value:
     return()    
-}
-
-
-# ------------------------------------------------------------------------------
-
-
-if (FALSE) {
-    require(RUnit)
-    testResult <- runTestFile("C:/Rmetrics/SVN/trunk/fExtremes/tests/runit3B.R",
-        rngKind = "Marsaglia-Multicarry", rngNormalKind = "Inversion")
-    printTextProtocol(testResult)
 }
 
 

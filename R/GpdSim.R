@@ -28,28 +28,34 @@
 
 
 ################################################################################
+# FUNCTION:               GPD SIMULATION:
+#  gpdSim                  Simulates a GPD distributed process
+################################################################################
 
 
-.First.lib =  
-function(lib, pkg)
-{   
-    # Startup Mesage and Desription:
-    MSG <- if(getRversion() >= "2.5") packageStartupMessage else message
-    dsc <- packageDescription(pkg)
-    if(interactive() || getOption("verbose")) { 
-        # not in test scripts
-        MSG(sprintf("\nPackage %s (%s) loaded.\n%s\n",
-            pkg, dsc$Version, dsc$Title),
-            "Rmetrics, (C) 1999-2007, Diethelm Wuertz, GPL\n")
-    }
+gpdSim = 
+function(model = list(xi = 0.25, mu = 0, beta = 1), n = 1000, seed = NULL)
+{   # A function implemented by Diethelm Wuertz
 
-    # Load dll:
-    # library.dynam("fExtremes", pkg, lib) 
+    # Description:
+    #   Generates random variates from a GPD distribution
+    
+    # FUNCTION:
+    
+    # Seed:
+    if (is.null(seed)) seed = NA else set.seed(seed)
+    
+    # Simulate:
+    ans = rgpd(n = n, xi = model$xi, mu = model$mu, beta = model$beta)  
+    ans = as.ts(ans)
+
+    # Control:
+    attr(ans, "control") = 
+        data.frame(t(unlist(model)), seed = seed, row.names = "")
+        
+    # Return Value:
+    ans 
 }
-
-
-if(!exists("Sys.setenv", mode = "function")) # pre R-2.5.0, use "old form"
-    Sys.setenv <- Sys.putenv
 
 
 ################################################################################

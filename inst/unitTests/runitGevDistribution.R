@@ -16,7 +16,7 @@
 
 # Copyrights (C)
 # for this R-port: 
-#   1999 - 2004, Diethelm Wuertz, GPL
+#   1999 - 2007, Diethelm Wuertz, GPL
 #   Diethelm Wuertz <wuertz@itp.phys.ethz.ch>
 #   info@rmetrics.org
 #   www.rmetrics.org
@@ -28,45 +28,28 @@
 
 
 ################################################################################
-
-
-################################################################################
-# FUNCTION:              GPD DISTRIBUTION FAMILY:
-# dgpd                    Density for the Generalized Pareto DF [USE FROM EVIS]
-#  pgpd                    Probability for the Generalized Pareto DF
-#  qgpd                    Quantiles for the Generalized Pareto DF
-#  rgpd                    Random variates for the Generalized Pareto DF
-# gpdMoments              Computes true statistics for GPD distribution
-# gpdSlider               Displays distribution and rvs for GPD distribution
+# FUNCTION:             GEV DISTRIBUTION FAMILY: [CALLING EVD]
+#  dgev                  Density for the GEV Distribution 
+#   pgev                  Probability for the GEV Distribution
+#   qgev                  Quantiles for the GEV Distribution
+#   rgev                  Random variates for the GEV Distribution
+#  gevMoments            Computes true statistics for GEV distribution
+#  gevSlider             Displays distribution and rvs for GEV distribution
 ################################################################################
 
 
-test.aaa = 
-function()
-{
-    # Help File:
-    helpFile = function() { 
-        example(GpdDistribution, ask = FALSE)
-        return() 
-    }
-    checkIdentical(
-        target = class(try(helpFile())),
-        current = "NULL")
-
-    # Return Value:
-    return()    
-}
-
-
-# ------------------------------------------------------------------------------
-
-
-test.gpd =
+test.gev =
 function()
 {
     # Check Distribution:
-    set.seed(1985)
-    .distCheck(fun = "gpd", n = 500, xi = 1, mu = 0, beta = 1)
+    RNGkind(kind = "Marsaglia-Multicarry", normal.kind = "Inversion")
+    set.seed(4711, kind = "Marsaglia-Multicarry")
+    .distCheck(fun = "gev", n = 2000, xi = 0.0, mu = 0, beta = 1)
+    
+    # Check Distribution:
+    RNGkind(kind = "Marsaglia-Multicarry", normal.kind = "Inversion")
+    set.seed(4711, kind = "Marsaglia-Multicarry")
+    .distCheck(fun = "gev", n = 5000, xi = 0.3, mu = 0, beta = 2)
     
     # Return Value:
     return()    
@@ -76,24 +59,27 @@ function()
 # ------------------------------------------------------------------------------
 
 
-test.gpdMoments = 
+test.gevMoments = 
 function()
 {
-    # gpdMoments(xi = 1, mu = 0, beta = 1) 
-
+    # gevMoments(xi = 0, mu = 0, beta = 1) 
+    
     # Compute Moments:
-    xi = seq(-2, 2, length = 401)
-    mom = gpdMoments(xi)
+    xi = seq(-4.5, 1.5, by = 0.25)
+    mom = gevMoments(xi)
+    print(mom)
     
     # Plot Mean:
     par(mfrow = c(2, 1), cex = 0.7)
     par(ask = FALSE)
-    plot(xi, mom$mean, main = "Mean", pch = 19, cex = 0.5)
+    xi = seq(-5, 2, length = 351)
+    mom = gevMoments(xi)
+    plot(xi, mom$mean, main = "Mean GEV", pch = 19, col = "steelblue")
     abline(v = 1, col = "red", lty = 3)
     abline(h = 0, col = "red", lty = 3)
     
     # Plot Variance:
-    plot(xi, log(mom$var), main = "log Variance", pch = 19, cex = 0.5)
+    plot(xi, log(mom$var), main = "log Variance GEV", pch = 19, col = "steelblue")
     abline(v = 1/2, col = "red", lty = 3)
     abline(h = 0.0, col = "red", lty = 3)
     
@@ -105,30 +91,21 @@ function()
 # ------------------------------------------------------------------------------
 
 
-test.gpdSlider = 
+test.gevSlider = 
 function()
 {
     # Distribution Slider:
-    print("Activate Slider manually!")
-    # gpdSlider(method = "dist")
+    # print("Activate Slider manually!")
+    # gevSlider(method = "dist")
+    NA
     
     # Random Variates Slider:
-    print("Activate Slider manually!")
-    # gpdSlider(method = "rvs")
+    # print("Activate Slider manually!")
+    # gevSlider(method = "rvs")
+    NA
     
     # Return Value:
     return()    
-}
-
-
-# ------------------------------------------------------------------------------
-
-
-if (FALSE) {
-    require(RUnit)
-    testResult <- runTestFile("C:/Rmetrics/SVN/trunk/fExtremes/tests/runit3A.R",
-        rngKind = "Marsaglia-Multicarry", rngNormalKind = "Inversion")
-    printTextProtocol(testResult)
 }
 
 

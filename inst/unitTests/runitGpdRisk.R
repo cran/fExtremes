@@ -42,26 +42,6 @@
 ################################################################################
 
 
-test.aaa = 
-function()
-{
-    # Help File:
-    helpFile = function() { 
-        example(GpdRiskMeasures, ask = FALSE)
-        return() 
-    }
-    checkIdentical(
-        target = class(try(helpFile())),
-        current = "NULL")
-
-    # Return Value:
-    return()    
-}
-
-
-# ------------------------------------------------------------------------------
-
-
 test.gpdTailPlot = 
 function()
 {
@@ -200,9 +180,10 @@ test.tailSlider =
 function()
 {
     # Danish Fire Claims:
-    x = as.timeSeries(data(danishClaims))
-    tailSlider(x)
-
+    # x = as.timeSeries(data(danishClaims))
+    # tailSlider(x)
+    NA
+    
     # Return Value:
     return()    
 }
@@ -221,17 +202,6 @@ function()
 
     # Return Value:
     return()    
-}
-
-
-# ------------------------------------------------------------------------------
-    
-
-if (FALSE) {
-    require(RUnit)
-    testResult <- runTestFile("C:/Rmetrics/SVN/trunk/fExtremes/tests/runit3C.R",
-        rngKind = "Marsaglia-Multicarry", rngNormalKind = "Inversion")
-    printTextProtocol(testResult)
 }
 
 

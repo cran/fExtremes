@@ -16,7 +16,7 @@
 
 # Copyrights (C)
 # for this R-port: 
-#   1999 - 2004, Diethelm Wuertz, GPL
+#   1999 - 2007, Diethelm Wuertz, GPL
 #   Diethelm Wuertz <wuertz@itp.phys.ethz.ch>
 #   info@rmetrics.org
 #   www.rmetrics.org
@@ -42,31 +42,15 @@
 ################################################################################
 
 
-test.aaa = 
-function()
-{
-    # Help File:
-    helpFile = function() { 
-        example(GevModelling, ask = FALSE)
-        return() 
-    }
-    checkIdentical(
-        target = class(try(helpFile())),
-        current = "NULL")
-
-    # Return Value:
-    return()    
-}
-
-
-# ------------------------------------------------------------------------------
-
-
 test.gevSim = 
 function()
 {
     # gevSim(model = list(xi=-0.25, mu=0, beta=1), n = 1000, seed = NULL) 
 
+    # RVs:
+    RNGkind(kind = "Marsaglia-Multicarry", normal.kind = "Inversion")
+    set.seed(4711, kind = "Marsaglia-Multicarry")
+    
     # Artificial Data Set:
     model = list(xi = -0.25, mu = 0, beta = 1)
     x.ts = gevSim(model, n = 50, seed = 4711) 
@@ -94,6 +78,10 @@ function()
 {
     # gumbelSim(model = list(mu=0, beta=1), n = 1000, seed = NULL) 
 
+    # RVs:
+    RNGkind(kind = "Marsaglia-Multicarry", normal.kind = "Inversion")
+    set.seed(4711, kind = "Marsaglia-Multicarry")
+    
     # Artificial Data Set:
     model = list(mu = 0, beta = 1)
     x.ts = gumbelSim(model, n = 50, seed = 4711) 
@@ -120,6 +108,10 @@ function()
 test.numericVectorBlocks = 
 function()
 {
+    # RVs:
+    RNGkind(kind = "Marsaglia-Multicarry", normal.kind = "Inversion")
+    set.seed(4711, kind = "Marsaglia-Multicarry")
+    
     # Check numeric vector as input:
     X = rt(5000, df = 4)
     x.vec = blockMaxima(X, 20)
@@ -157,29 +149,38 @@ function()
 test.timeSeriesBlocks = 
 function()
 {   
-    # Check timeSeries object as input:
+    # RVs:
+    RNGkind(kind = "Marsaglia-Multicarry", normal.kind = "Inversion")
+    set.seed(4711, kind = "Marsaglia-Multicarry")
+    
+    # Create an artificial timeSeries with dummy positions:
     X = as.timeSeries(rt(5000, df = 4))
+    
+    # Compute Block Maxima:
     x.tS = blockMaxima(X, "monthly")
     class(x.tS)
     head(x.tS)
     
+    # Convert to Vector:
+    x.vec = as.vector(x.tS)
+    
     # Internal Fit - GEV PWM:
-    fit = .gevpwmFit(x.tS)
+    fit = .gevpwmFit(x.vec)
     fit
     fit$par.ests
     
     # Internal Fit - GEV MLE:
-    fit = .gevmleFit(x.tS)
+    fit = .gevmleFit(x.vec)
     fit
     fit$par.ests
     
     # Internal Fit - Gumbel PWM:
-    fit = .gumpwmFit(x.tS)
+    fit = .gumpwmFit(x.vec)
     fit
     fit$par.ests
     
     # Internal Fit - Gumbel MLE:
-    fit = .gummleFit(x.tS)
+    fit = .gummleFit(x.vec)
     fit
     fit$par.ests
      
@@ -197,6 +198,10 @@ function()
     # gevFit(x, block = 1, type = c("mle", "pwm"), 
     #   title = NULL, description = NULL, ...) 
 
+    # RVs:
+    RNGkind(kind = "Marsaglia-Multicarry", normal.kind = "Inversion")
+    set.seed(4711, kind = "Marsaglia-Multicarry")
+    
     # Simulate Series:
     model = list(xi = -0.25, mu = 0, beta = 1)
     x.ts = gevSim(model = model, n = 5000, seed = 4711) 
@@ -240,6 +245,10 @@ function()
     # gevFit(x, block = 1, type = c("mle", "pwm"), 
     #   title = NULL, description = NULL, ...) 
 
+    # RVs:
+    RNGkind(kind = "Marsaglia-Multicarry", normal.kind = "Inversion")
+    set.seed(4711, kind = "Marsaglia-Multicarry")
+    
     # Simulate Series:
     model = list(mu = 0, beta = 1)
     x.ts = gumbelSim(model = model, n = 5000, seed = 4711) 
@@ -283,6 +292,10 @@ function()
     # gevFit(x, block = 1, type = c("mle", "pwm"), 
     #   title = NULL, description = NULL, ...) 
    
+    # RVs:
+    RNGkind(kind = "Marsaglia-Multicarry", normal.kind = "Inversion")
+    set.seed(4711, kind = "Marsaglia-Multicarry")
+    
     # Simulate Series:
     model = list(xi = -0.25, mu = 0, beta = 1)
     x.ts = gevSim(model = model, n = 5000, seed = 4711) 
@@ -369,17 +382,6 @@ function()
     
     # Return Value:
     return()    
-}
-
-
-# ------------------------------------------------------------------------------
-
-
-if (FALSE) {
-    require(RUnit)
-    testResult <- runTestFile("C:/Rmetrics/SVN/trunk/fExtremes/tests/runit2B.R",
-        rngKind = "Marsaglia-Multicarry", rngNormalKind = "Inversion")
-    printTextProtocol(testResult)
 }
 
 
