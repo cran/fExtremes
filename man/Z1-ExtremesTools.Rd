@@ -1,7 +1,7 @@
-\name{fExtremesTools}
+\name{ExtremesTools}
 
 
-\alias{fExtremesTools}
+\alias{ExtremesTools}
 
 \alias{xmpExtremes}
 \alias{xmpfExtremes}
@@ -57,7 +57,11 @@ xmpExtremes(prompt = "")
 
 
 \examples{
-## currently none ...
+\dontrun{
+## xmpfExtremes -
+   # Popup the examples menu:
+   xmpfExtremes()
+}
 }
 
 
@@ -68,5 +72,5 @@ xmpExtremes(prompt = "")
 }
 
 
-\keyword{hplot}
+\keyword{programming}
 

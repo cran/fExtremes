@@ -26,11 +26,12 @@
 			
 # Mean Residual Life Plot:
 
+    require(fBasics)
+
 	for (i in 1:6) {
 		set.seed(seed[i])
 		mrlPlot(rsymstb(n, alpha = 1.7), nint = 100, 
 			labels = FALSE, plottype = "", xlim = c(0, 60), 
 			ylim = c(-50, 150))
 		title(xlab = "u", ylab = "e", main = mains[i])			
-	}
-
+	} 

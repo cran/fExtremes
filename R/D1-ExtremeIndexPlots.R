@@ -14,16 +14,17 @@
 # Free Foundation, Inc., 59 Temple Place, Suite 330, Boston, 
 # MA  02111-1307  USA
 
-# Copyrights (C) 
-# this R-port: 
-#   by Diethelm Wuertz <wuertz@itp.phys.ethz.ch>
+# Copyrights (C)
+# for this R-port: 
+#   1999 - 2004, Diethelm Wuertz, GPL
+#   Diethelm Wuertz <wuertz@itp.phys.ethz.ch>
+#   info@rmetrics.org
+#   www.rmetrics.org
 # for the code accessed (or partly included) from other R-ports:
-#   R: see R's copyright and license file
-#   evir: original S functions (EVIS) by Alexander McNeil <mcneil@math.ethz.ch>
-#     R port by Alec Stephenson <a.stephenson@lancaster.ac.uk>
-#   ismev: Original S functions by Stuart Coles <Stuart.Coles@bristol.ac.uk>
-#     R port/documentation by Alec Stephenson <a.stephenson@lancaster.ac.uk>
-#   evd: Alec Stephenson <alec_stephenson@hotmail.com>
+#   see R's copyright and license files
+# for the code accessed (or partly included) from contributed R-ports
+# and other sources
+#   see Rmetrics's copyright file
 
 
 ################################################################################

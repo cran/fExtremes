@@ -1,4 +1,4 @@
-\name{fExtremesBUILTIN}
+\name{ExtremesBuiltin}
 
 \alias{decluster} 
 \alias{emplot}
@@ -101,7 +101,9 @@
 
 \description{
 
-	fExtremes Builtin Functions from EVIR and ISMEV Packages
+	Builtin functions as available in the contributed \R-packages
+    'evir' and 'ismev'. They are used only as internal functions,
+    and they are not thought for usage by Rmetrics users.
 	
 }
 

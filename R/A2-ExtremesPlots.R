@@ -14,16 +14,17 @@
 # Free Foundation, Inc., 59 Temple Place, Suite 330, Boston, 
 # MA  02111-1307  USA
 
-# Copyrights (C) 
-# this R-port: 
-#   by Diethelm Wuertz <wuertz@itp.phys.ethz.ch>
+# Copyrights (C)
+# for this R-port: 
+#   1999 - 2004, Diethelm Wuertz, GPL
+#   Diethelm Wuertz <wuertz@itp.phys.ethz.ch>
+#   info@rmetrics.org
+#   www.rmetrics.org
 # for the code accessed (or partly included) from other R-ports:
-#   R: see R's copyright and license file
-#   evir: original S functions (EVIS) by Alexander McNeil <mcneil@math.ethz.ch>
-#     R port by Alec Stephenson <a.stephenson@lancaster.ac.uk>
-#   ismev: Original S functions by Stuart Coles <Stuart.Coles@bristol.ac.uk>
-#     R port/documentation by Alec Stephenson <a.stephenson@lancaster.ac.uk>
-#   evd: Alec Stephenson <alec_stephenson@hotmail.com>
+#   see R's copyright and license files
+# for the code accessed (or partly included) from contributed R-ports
+# and other sources
+#   see Rmetrics's copyright file
 
 
 ################################################################################
@@ -44,7 +45,7 @@
 ################################################################################
 
 
-emdPlot =
+emdPlot = 
 function(x, doplot = TRUE, plottype = c("", "x", "y", "xy"),
 labels = TRUE, ...)
 {	# A function imported from R-package evir
@@ -103,7 +104,7 @@ labels = TRUE, ...)
 # ------------------------------------------------------------------------------
 
 
-qqPlot =
+qqPlot = 
 function (x, doplot = TRUE, labels = TRUE, ...) 
 {	# A function written by Diethelm Wuertz
 	
@@ -213,7 +214,7 @@ function(x, doplot = TRUE, labels = TRUE, ...)
 # ------------------------------------------------------------------------------
 
 
-qPlot =
+qPlot = 
 function(x, xi = 0, trim = NA, threshold = NA, doplot = TRUE, 
 labels = TRUE, ...)
 {	# A function imported from R-package evir
@@ -308,7 +309,7 @@ function (x, tail = 0.05, doplot = TRUE, labels = TRUE, ...)
 # ------------------------------------------------------------------------------
 
 
-mrlPlot =
+mrlPlot = 
 function(x, conf = 0.95, umin = NA, umax=NA, nint = 100, 
 doplot = TRUE, plottype = c("autoscale", ""), labels = TRUE, ...)
 {	# A function implemented by Diethelm Wuertz
@@ -379,7 +380,7 @@ doplot = TRUE, plottype = c("autoscale", ""), labels = TRUE, ...)
 # ------------------------------------------------------------------------------
 
 
-mePlot =
+mePlot = 
 function(x, doplot = TRUE, labels = TRUE, ...)
 {	# A function implemented by Diethelm Wuertz
 	
@@ -646,7 +647,7 @@ labels = TRUE, ...)
 # ------------------------------------------------------------------------------
 
 
-xacfPlot =
+xacfPlot = 
 function(x, threshold = 0.95, lag.max = 15, doplot = TRUE, ...)
 {	# A function implemented by Diethelm Wuertz
 
@@ -697,7 +698,7 @@ function(x, threshold = 0.95, lag.max = 15, doplot = TRUE, ...)
 # ******************************************************************************
 
 	    
-interactivePlot =
+interactivePlot = 
 function(x, choices = paste("Plot", 1:9), 
 plotFUN = paste("plot.", 1:9, sep = ""), which = "all", ...)
 {	# A function implemented by Diethelm Wuertz
@@ -782,7 +783,7 @@ plotFUN = paste("plot.", 1:9, sep = ""), which = "all", ...)
 # ******************************************************************************
 
 
-gridVector =
+gridVector = 
 function(x, y)
 {   # A function implemented by Diethelm Wuertz, GPL
 

@@ -42,10 +42,10 @@ function(xi, mu = 0, beta = 1)
     xi0 = c(0, mu+beta*euler, 0)
     
     # Supress warning for NaN's from Gamma Function:
-    options(warn=-1)
+    options(warn = -1)
     gevMean = mu + beta * xinv * (gamma(1-xi)-1) * g[sign(xi-1)+2] +
         xi0[(sign(xi)+2)]
-    options(warn=0)
+    options(warn = 0)
     
     # VAR: Returns for x >= 1 NaN:
     g = c(1, 0, NaN)
@@ -56,7 +56,7 @@ function(xi, mu = 0, beta = 1)
     options(warn=-1)
     gevVar = (beta*xinv)^2 * (gamma(1-2*xi) - gamma(1-xi)^2 ) * 
         g[sign(2*xi-1)+2] + xi0[(sign(xi)+2)]
-    options(warn=0)     
+    options(warn = 0)     
 
     # Return Value:
     list(mean = gevMean, var = gevVar)      
@@ -123,8 +123,8 @@ function (x, mean = NULL, main = "SLLN", ...)
     # Verify SLLN:
     if (is.null(mean)) mean=mean(cumsum(x)/(1:length(x)))
     nx  =  length(x)
-    plot(cumsum(x)/(1:nx), xlab="n", ylab="x", type="l", main=main, ...)
-    lines(c(0, nx), c(mu, mu), col=2)
+    plot(cumsum(x)/(1:nx), xlab = "n", ylab = "x", type = "l", main = main, ...)
+    lines(c(0, nx), c(mu, mu), col = 2)
     y  =  cumsum(x)/(1:nx)
     
     # Return Value:

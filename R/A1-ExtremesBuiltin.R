@@ -14,16 +14,17 @@
 # Free Foundation, Inc., 59 Temple Place, Suite 330, Boston, 
 # MA  02111-1307  USA
 
-# Copyrights (C) 
-# this R-port: 
-#   by Diethelm Wuertz <wuertz@itp.phys.ethz.ch>
+# Copyrights (C)
+# for this R-port: 
+#   1999 - 2004, Diethelm Wuertz, GPL
+#   Diethelm Wuertz <wuertz@itp.phys.ethz.ch>
+#   info@rmetrics.org
+#   www.rmetrics.org
 # for the code accessed (or partly included) from other R-ports:
-#   R: see R's copyright and license file
-#   evir: original S functions (EVIS) by Alexander McNeil <mcneil@math.ethz.ch>
-#     R port by Alec Stephenson <a.stephenson@lancaster.ac.uk>
-#   ismev: Original S functions by Stuart Coles <Stuart.Coles@bristol.ac.uk>
-#     R port/documentation by Alec Stephenson <a.stephenson@lancaster.ac.uk>
-#   evd: Alec Stephenson <alec_stephenson@hotmail.com>
+#   see R's copyright and license files
+# for the code accessed (or partly included) from contributed R-ports
+# and other sources
+#   see Rmetrics's copyright file
 
 
 ################################################################################
@@ -2234,10 +2235,10 @@ function(x, pp, ci.type = c("likelihood","wald"), ci.p = 0.95,
 	cond <- parmax > crit
 	xp <- xp[cond]
 	parmax <- parmax[cond]
-	par(new = T)
+	par(new = TRUE)
 	dolog <- ""
         if(x$alog == "xy" || x$alog == "x") dolog <- "x"
-	plot(xp, parmax, type = "n", xlab = "", ylab = "", axes = F,
+	plot(xp, parmax, type = "n", xlab = "", ylab = "", axes = FALSE,
 	     xlim = range(x$plotmin, x$plotmax),
 	     ylim = range(overallmax, crit), log = dolog)
 	axis(4, at = overallmax - qchisq(c(0.95, 0.99), 1)/2,
@@ -2304,10 +2305,10 @@ function(x, pp, ci.p = 0.95, like.num = 50)
     cond <- parmax > crit
     xp <- xp[cond]
     parmax <- parmax[cond]
-    par(new = T)
+    par(new = TRUE)
     dolog <- ""
     if(x$alog == "xy" || x$alog == "x") dolog <- "x"
-    plot(xp, parmax, type = "n", xlab = "", ylab = "", axes = F, xlim = 
+    plot(xp, parmax, type = "n", xlab = "", ylab = "", axes = FALSE, xlim = 
 	 range(x$plotmin, x$plotmax), ylim =
          range(overallmax, crit), log = dolog)
     axis(4, at = overallmax - qchisq(c(0.95, 0.99), 1)/2,

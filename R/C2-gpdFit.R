@@ -14,16 +14,17 @@
 # Free Foundation, Inc., 59 Temple Place, Suite 330, Boston, 
 # MA  02111-1307  USA
 
-# Copyrights (C) 
-# this R-port: 
-#   by Diethelm Wuertz <wuertz@itp.phys.ethz.ch>
+# Copyrights (C)
+# for this R-port: 
+#   1999 - 2004, Diethelm Wuertz, GPL
+#   Diethelm Wuertz <wuertz@itp.phys.ethz.ch>
+#   info@rmetrics.org
+#   www.rmetrics.org
 # for the code accessed (or partly included) from other R-ports:
-#   R: see R's copyright and license file
-#   evir: original S functions (EVIS) by Alexander McNeil <mcneil@math.ethz.ch>
-#     R port by Alec Stephenson <a.stephenson@lancaster.ac.uk>
-#   ismev: Original S functions by Stuart Coles <Stuart.Coles@bristol.ac.uk>
-#     R port/documentation by Alec Stephenson <a.stephenson@lancaster.ac.uk>
-#   evd: Alec Stephenson <alec_stephenson@hotmail.com>
+#   see R's copyright and license files
+# for the code accessed (or partly included) from contributed R-ports
+# and other sources
+#   see Rmetrics's copyright file
 
 
 ################################################################################
@@ -80,7 +81,9 @@ information = c("observed", "expected"), ...)
     call = match.call()
     type = type[1]
     # if (is.na(threshold) & is.na(nextremes)) threshold = min(x)
-    if (type == "mle") type = "ml"
+    if (type == "mle") {
+	    type = "ml"
+    }
     fitted = gpd(data = x, threshold = threshold, nextremes = nextremes, 
     	method = type, information = information, ...) 
     	
@@ -301,7 +304,8 @@ function(fit, optlog = NA, extend = 1.5, labels = TRUE, ...)
 	# FUNCTION:
 	
 	# Return Value:
-	tailplot(x = fit, optlog = optlog, extend = extend, labels = labels, ...)
+	tailplot(x = fit$fit, optlog = optlog, extend = extend, 
+		labels = labels, ...)
 }
 
 
@@ -349,11 +353,16 @@ ci = 0.95, autoscale = TRUE, labels = TRUE, ...)
 
 
 gpdqPlot =
-function(x, pp, ci.type = c("likelihood", "wald"), ci.p = 0.95, like.num = 50)
+function(x, pp = 0.99, ci.type = c("likelihood", "wald"), ci.p = 0.95, 
+like.num = 50)
 {	# A function implemented by Diethelm Wuertz
 
 	# Description:
 	#	Adds Quantile Estimates to plot.gpd
+	
+	# Arguments:
+	#	x  - an object of class 'gpdFit'
+	#	pp - the probability level
 	
 	# FUNCTION:
 
@@ -366,11 +375,15 @@ function(x, pp, ci.type = c("likelihood", "wald"), ci.p = 0.95, like.num = 50)
 
 
 gpdsfallPlot =
-function(x, pp, ci.p = 0.95, like.num = 50)
+function(x, pp = 0.99, ci.p = 0.95, like.num = 50)
 {	# A function implemented by Diethelm Wuertz
 
 	# Description:
 	#	Adds Expected Shortfall Estimates to a GPD Plot	
+	
+	# Arguments:
+	#	x  - an object of class 'gpdFit'
+	#	pp - the probability level
 	
 	# FUNCTION:
 
@@ -383,16 +396,20 @@ function(x, pp, ci.p = 0.95, like.num = 50)
 
 
 gpdriskmeasures = 
-function(x, plevels)
+function(x, plevels = c(0.99, 0.995, 0.999, 0.9995, 0.9999))
 {	# A function implemented by Diethelm Wuertz
 
 	# Description:
-	#	Calculates Quantiles and Expected Shortfalls	
+	#	Calculates Quantiles and Expected Shortfalls
+	
+	# Arguments:
+	#	x  - an object of class 'gpdFit'
+	#   p - a numeric value or vector of probability levels	
 	
 	# FUNCTION:
 	
 	# Return Value:
-	riskmeasures(x = x, p = plevels)
+	as.data.frame(riskmeasures(x = x$fit, p = plevels))
 }
 
 
