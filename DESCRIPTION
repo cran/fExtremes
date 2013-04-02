@@ -1,7 +1,7 @@
 Package: fExtremes
-Version: 2160.78
-Revision: 5405
-Date: 2012-11-30
+Version: 2160.79
+Revision: 5487
+Date: 2013-04-02
 Title: Rmetrics - Extreme Financial Market Data
 Author: Diethelm Wuertz and many others, see the SOURCE file
 Depends: R (>= 2.4.0), methods, timeDate, timeSeries, fBasics, fGarch,
@@ -10,12 +10,13 @@ Suggests: RUnit, tcltk
 Maintainer: Yohan Chalabi <yohan.chalabi@rmetrics.org>
 Description: Environment for teaching "Financial Engineering and
         Computational Finance"
-NOTE: SEVERAL PARTS ARE STILL PRELIMINARY AND MAY BE CHANGED IN THE
-        FUTURE. THIS TYPICALLY INCLUDES FUNCTION AND ARGUMENT NAMES, AS
-        WELL AS DEFAULTS FOR ARGUMENTS AND RETURN VALUES.
+Note: Several parts are still preliminary and may be changed in the
+        future. this typically includes function and argument names, as
+        well as defaults for arguments and return values.
 LazyData: yes
 License: GPL (>= 2)
 URL: http://www.rmetrics.org
-Packaged: 2012-11-30 09:27:36 UTC; yankee
+Packaged: 2013-04-02 20:08:07 UTC; yankee
+NeedsCompilation: no
 Repository: CRAN
-Date/Publication: 2012-11-30 10:09:49
+Date/Publication: 2013-04-03 01:00:40

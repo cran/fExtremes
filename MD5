@@ -1,5 +1,5 @@
-d31c595f7bec563634cb79b1ceca94ce *ChangeLog
-cb19a43a33a14ab14c73fb12944da93b *DESCRIPTION
+99cd83fd3faed7363810d8d41c5fd017 *ChangeLog
+7300ac548a78eda6c9b777b752aea017 *DESCRIPTION
 64c4693dbfe914d62b556004d72de71a *NAMESPACE
 cd387c13bac92b586162a5059ea2dbee *R/DataPreprocessing.R
 fe5bf844eb0bc3441061eb801aa1fbf7 *R/ExtremeIndex.R
@@ -21,7 +21,7 @@ c798700713a81b4cf7a27b37010022f1 *R/GpdFit.R
 eedf28bb1b693bfc23cf90a84c9cbdfb *R/ValueAtRisk.R
 69559d2b10e05416534c7be296325501 *R/meanExcessPlot.R
 2e2118e30bc041ead36e0d87c27c38de *R/metrics.R
-776c543dd4b91983eac81cf5aaa8092b *R/zzz.R
+1aa4c307071784e345d62d7429091974 *R/zzz.R
 bb453207f5e2fb79f844c9816db5d2d8 *data/bmwRet.csv.gz
 71b678e389195b7b3921e3c000b5436b *data/danishClaims.csv.gz
 6042b9c5e5bec3ecc1b6959cd2858b64 *inst/COPYRIGHT.html
@@ -32,7 +32,7 @@ f0e530000f96bc971e3fb89a25272c17 *inst/unitTests/runit.DataPreprocessing.R
 5c4d0101ecf88db0530fd53f5c2f7b32 *inst/unitTests/runit.ExtremesData.R
 df54978979460d89018b2c7e8d9ed82e *inst/unitTests/runit.GevDistribution.R
 aeed009908a914715e5d4947d8c4e098 *inst/unitTests/runit.GevMdaEstimation.R
-2ac59ae0f6de6425722363feb02bb98b *inst/unitTests/runit.GevModelling.R
+8599e76e48e0abc729b630085c0943a6 *inst/unitTests/runit.GevModelling.R
 553d134fc982fe578b1c4013b728a50e *inst/unitTests/runit.GevRisk.R
 9f0952a7794071690346f36d017c8c7f *inst/unitTests/runit.GpdDistribution.R
 9ccbeecb2cd8580869caac1b8dae64c6 *inst/unitTests/runit.GpdModelling.R
