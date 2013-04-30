@@ -1,5 +1,5 @@
-99cd83fd3faed7363810d8d41c5fd017 *ChangeLog
-7300ac548a78eda6c9b777b752aea017 *DESCRIPTION
+8f23146c12b8b6957d6b2ddbc2ee30c3 *ChangeLog
+0cfae9c00d0a10dc973a87ec02429e6c *DESCRIPTION
 64c4693dbfe914d62b556004d72de71a *NAMESPACE
 cd387c13bac92b586162a5059ea2dbee *R/DataPreprocessing.R
 fe5bf844eb0bc3441061eb801aa1fbf7 *R/ExtremeIndex.R
@@ -32,7 +32,7 @@ f0e530000f96bc971e3fb89a25272c17 *inst/unitTests/runit.DataPreprocessing.R
 5c4d0101ecf88db0530fd53f5c2f7b32 *inst/unitTests/runit.ExtremesData.R
 df54978979460d89018b2c7e8d9ed82e *inst/unitTests/runit.GevDistribution.R
 aeed009908a914715e5d4947d8c4e098 *inst/unitTests/runit.GevMdaEstimation.R
-8599e76e48e0abc729b630085c0943a6 *inst/unitTests/runit.GevModelling.R
+2cb05c2f27012611715b74e9daf89ba0 *inst/unitTests/runit.GevModelling.R
 553d134fc982fe578b1c4013b728a50e *inst/unitTests/runit.GevRisk.R
 9f0952a7794071690346f36d017c8c7f *inst/unitTests/runit.GpdDistribution.R
 9ccbeecb2cd8580869caac1b8dae64c6 *inst/unitTests/runit.GpdModelling.R
