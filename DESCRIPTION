@@ -1,22 +1,24 @@
 Package: fExtremes
-Version: 3010.81
-Revision: 5532
-Date: 2013-12-17
-Title: Rmetrics - Extreme Financial Market Data
-Author: Diethelm Wuertz and many others, see the SOURCE file
-Depends: R (>= 2.4.0), timeDate, timeSeries, fBasics, fGarch, fTrading
-Imports: methods
+Title: Rmetrics - Modelling Extreme Events in Finance
+Date: 2017-11-12
+Version: 3042.82
+Author: Diethelm Wuertz [aut],
+	Tobias Setz [cre],
+	Yohan Chalabi [ctb]
+Maintainer: Tobias Setz <tobias.setz@live.com>
+Description: Provides functions for analysing
+  and modelling extreme events in financial time Series. The
+  topics include: (i) data pre-processing, (ii) explorative 
+  data analysis, (iii) peak over threshold modelling, (iv) block
+  maxima modelling, (v) estimation of VaR and CVaR, and (vi) the
+  computation of the extreme index.
+Depends: R (>= 2.15.1), timeDate, timeSeries, fBasics, fGarch
+Imports: methods, graphics, stats
 Suggests: RUnit, tcltk
-Maintainer: Yohan Chalabi <yohan.chalabi@rmetrics.org>
-Description: Environment for teaching "Financial Engineering and
-        Computational Finance"
-Note: Several parts are still preliminary and may be changed in the
-        future. this typically includes function and argument names, as
-        well as defaults for arguments and return values.
 LazyData: yes
 License: GPL (>= 2)
 URL: http://www.rmetrics.org
-Packaged: 2013-12-17 20:40:23 UTC; yohan
 NeedsCompilation: no
+Packaged: 2017-11-17 06:59:49 UTC; Tobias Setz
 Repository: CRAN
-Date/Publication: 2013-12-17 23:16:44
+Date/Publication: 2017-11-17 08:38:27 UTC

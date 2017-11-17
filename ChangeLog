@@ -1,10 +1,5 @@
-2013-12-10  chalabi
-
-	* DESCRIPTION:
-
 2013-04-30  chalabi
 
-	* ChangeLog, DESCRIPTION: Updated ChangeLog and DSC files
 	* DESCRIPTION, inst/unitTests/runit.GevModelling.R: Updating unit
 	  tests
 
