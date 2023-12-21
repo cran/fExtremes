@@ -1,7 +1,6 @@
 Package: fExtremes
 Title: Rmetrics - Modelling Extreme Events in Finance
-Date: 2022-08-06
-Version: 4021.83
+Version: 4032.84
 Authors@R: c(person("Diethelm", "Wuertz", role = "aut")
 	   , person("Tobias", "Setz", role = "aut")
 	   , person("Yohan", "Chalabi", role = "aut")
@@ -22,11 +21,11 @@ License: GPL (>= 2)
 URL: https://www.rmetrics.org
 BugReports: https://r-forge.r-project.org/projects/rmetrics
 NeedsCompilation: no
-Packaged: 2022-08-06 07:26:34 UTC; paul
+Packaged: 2023-12-21 19:35:48 UTC; Paul
 Author: Diethelm Wuertz [aut],
   Tobias Setz [aut],
   Yohan Chalabi [aut],
   Paul J. Northrop [cre, ctb]
 Maintainer: Paul J. Northrop <p.northrop@ucl.ac.uk>
 Repository: CRAN
-Date/Publication: 2022-08-06 14:10:02 UTC
+Date/Publication: 2023-12-21 22:40:06 UTC
